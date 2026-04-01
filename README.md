@@ -1,6 +1,6 @@
-# IntelyAI Desktop
+# Intely Desktop
 
-Aplicacion de escritorio para IntelyAI. Envuelve la app web de produccion en una ventana nativa usando Electron.
+Aplicacion de escritorio para Intely. Envuelve la app web de produccion en una ventana nativa usando Electron.
 
 ## Requisitos
 

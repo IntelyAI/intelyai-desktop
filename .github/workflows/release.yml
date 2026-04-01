@@ -29,7 +29,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: windows
-          path: dist/IntelyAI-Setup.exe
+          path: dist/Intely-Setup.exe
 
   build-mac:
     runs-on: macos-latest
@@ -44,7 +44,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: mac
-          path: dist/IntelyAI.dmg
+          path: dist/Intely.dmg
 
   build-linux:
     runs-on: ubuntu-latest
@@ -59,7 +59,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: linux
-          path: dist/IntelyAI.AppImage
+          path: dist/Intely.AppImage
 
   release:
     needs: [build-windows, build-mac, build-linux]
@@ -85,9 +85,10 @@ jobs:
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.meta.outputs.tag }}
-          name: IntelyAI Desktop v${{ steps.meta.outputs.version }} (build ${{ github.run_number }})
+          name: Intely Desktop v${{ steps.meta.outputs.version }} (build ${{ github.run_number }})
           files: |
-            artifacts/windows/IntelyAI-Setup.exe
-            artifacts/mac/IntelyAI.dmg
-            artifacts/linux/IntelyAI.AppImage
+            artifacts/windows/Intely-Setup.exe
+            artifacts/mac/Intely.dmg
+            artifacts/linux/Intely.AppImage
           generate_release_notes: true
+

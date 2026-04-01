@@ -1,9 +1,9 @@
 {
-  "name": "intelyai-desktop",
+  "name": "intely-desktop",
   "version": "1.0.0",
-  "description": "IntelyAI - Aplicacion de escritorio",
+  "description": "Intely - Aplicacion de escritorio",
   "main": "main.js",
-  "author": "IntelyAI",
+  "author": "Intely",
   "license": "MIT",
   "scripts": {
     "start": "electron .",
@@ -14,8 +14,8 @@
   },
   "build": {
     "publish": null,
-    "appId": "com.intelyai.desktop",
-    "productName": "IntelyAI",
+    "appId": "com.intely.desktop",
+    "productName": "Intely",
     "directories": {
       "output": "dist"
     },
@@ -28,7 +28,7 @@
     "win": {
       "target": "nsis",
       "icon": "assets/icon.png",
-      "artifactName": "IntelyAI-Setup.${ext}"
+      "artifactName": "Intely-Setup.${ext}"
     },
     "nsis": {
       "oneClick": false,
@@ -38,13 +38,13 @@
       "target": "dmg",
       "icon": "assets/icon.png",
       "category": "public.app-category.business",
-      "artifactName": "IntelyAI.${ext}"
+      "artifactName": "Intely.${ext}"
     },
     "linux": {
       "target": "AppImage",
       "icon": "assets/icon.png",
       "category": "Office",
-      "artifactName": "IntelyAI.${ext}"
+      "artifactName": "Intely.${ext}"
     }
   },
   "devDependencies": {
@@ -52,3 +52,4 @@
     "electron-builder": "^26.0.0"
   }
 }
+
