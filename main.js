@@ -6,7 +6,8 @@ let mainWindow = null;
 let tray = null;
 
 function getIcon() {
-  const iconPath = path.join(__dirname, "assets", "icon.png");
+  const iconFile = process.platform === "win32" ? "icon.ico" : "icon.png";
+  const iconPath = path.join(__dirname, "assets", iconFile);
   return nativeImage.createFromPath(iconPath);
 }
 
@@ -137,3 +138,4 @@ app.on("window-all-closed", () => {
     app.quit();
   }
 });
+
