@@ -2,8 +2,12 @@ name: Build & Release
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - main
+
+concurrency:
+  group: release-main
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -58,12 +62,27 @@ jobs:
     needs: [build-windows, build-mac, build-linux]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Release metadata
+        id: meta
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag=v${VERSION}-${{ github.run_number }}" >> $GITHUB_OUTPUT
+
       - uses: actions/download-artifact@v4
         with:
           path: artifacts
 
       - uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ steps.meta.outputs.tag }}
+          name: IntelyAI Desktop v${{ steps.meta.outputs.version }} (build ${{ github.run_number }})
           files: |
             artifacts/windows/IntelyAI-Setup.exe
             artifacts/mac/IntelyAI.dmg
